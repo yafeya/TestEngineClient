@@ -6,16 +6,20 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import * as Services from '../services/index';
-
+import * as Components from '../components/index';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormsModule,
-    HttpModule
+    Components.SolutionListComponent,
+    Components.SolutionCardComponent,
+    Components.SolutionDetailComponent,
+    Components.SolutionDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule
   ],
   providers: [Services.HttpClient, Services.SolutionProvider],
   bootstrap: [AppComponent]
