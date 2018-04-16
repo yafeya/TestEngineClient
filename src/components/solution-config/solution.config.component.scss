@@ -1,0 +1,19 @@
+div {
+    position: relative;
+    vertical-align: top;
+}
+
+.error-message {
+    color: red;
+    font-style: italic;
+}
+
+.button-area {
+    display: inline;
+    left: 10px;
+    position: absolute;
+    button {
+        margin-right: 10px;
+        width: 40px;
+    }
+}

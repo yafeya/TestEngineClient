@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TestSolution } from '../../models/index';
+import { TestSolution, TestSolutionViewModel } from '../../models/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,16 +9,19 @@ import { Router } from '@angular/router';
 })
 export class SolutionCardComponent {
 
-    @Input('Solution') set Solution(solution: TestSolution) {
+    @Input('Solution') set Solution(solution: TestSolutionViewModel) {
         if (solution != undefined) {
-            this.mSolution = solution;
+            this.mSolution = solution.RawModel;
             this.mName = this.mSolution.Name;
             this.mDescription = this.mSolution.Description;
             this.mLocation = this.mSolution.Location;
+            solution.OnSelectedChanged = (selected: boolean) => {
+                this.mIsSelected = selected;
+            }
         }
     }
 
-    constructor(private router: Router){
+    constructor(private router: Router) {
 
     }
 
@@ -26,6 +29,7 @@ export class SolutionCardComponent {
     private mName: string = '';
     private mDescription: string = '';
     private mLocation: string = '';
+    private mIsSelected: boolean;
 
     get Name(): string {
         return this.mName;
@@ -39,7 +43,11 @@ export class SolutionCardComponent {
         return this.mLocation;
     }
 
-    NavigateToConfig() {
-        this.router.navigate(['configure']);
+    get IsSelected(): boolean {
+        return this.mIsSelected;
     }
+
+    // NavigateToConfig() {
+    //     this.router.navigate(['configure'], { queryParams: this.mSolution });
+    // }
 }

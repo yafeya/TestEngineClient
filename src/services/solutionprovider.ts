@@ -48,7 +48,6 @@ export class SolutionProvider {
         if (rawConfig != undefined) {
             config = new ConfigInfo();
             config.NeedArgs = rawConfig.NeedArgs;
-            config.LengthLimit = rawConfig.LengthLimit;
             let argsTemplate: RawArg[] = this.getArgsTemplate(rawConfig);
             config.TemplateArgs = argsTemplate;
         }

@@ -14,8 +14,8 @@ import * as Components from '../components/index';
     AppComponent,
     Components.SolutionListComponent,
     Components.SolutionCardComponent,
-    Components.SolutionDetailComponent,
-    Components.SolutionConfigComponent
+    Components.SolutionConfigComponent,
+    Components.RawArgConfigurationComponent
   ],
   imports: [
     BrowserModule,

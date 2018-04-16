@@ -1,3 +1,9 @@
-<div class="solution-list" *ngFor="let solution of Solutions">
+<div class="solution-list" *ngFor="let solution of Solutions" (click)="onSelected(solution)">
     <solution-card [Solution]="solution"></solution-card>
+</div>
+
+<hr>
+
+<div *ngIf="IsDetailEnabled">
+    <solution-cofig [Solution]="SelectedSolution"></solution-cofig>
 </div>

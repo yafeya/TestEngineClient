@@ -9,3 +9,13 @@ export class TestSolution {
 
     Url: TestSolutionUrl;
 }
+
+export class TestSolutionViewModel {
+    constructor(solution: TestSolution) {
+        this.RawModel = solution;
+    }
+
+    RawModel: TestSolution;
+    IsSelected: boolean;
+    OnSelectedChanged: (selected: boolean) => void;
+}

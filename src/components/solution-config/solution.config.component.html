@@ -1,1 +1,16 @@
-<button (click)="NavigateToList()">To Solution List</button>
+<h1>Arguments Configuration:</h1>
+<div *ngIf="IsArgsEnabled">
+    <div *ngFor="let arg of Args">
+        <arg-cofig [Template]="arg"></arg-cofig>
+    </div>
+</div>
+<div *ngIf="!IsArgsEnabled">
+    This solution doesn't need any argument.
+</div>
+<div class="button-area">
+    <button (click)="Start()">Start</button>
+    <button (click)="Stop()">Stop</button>
+</div>
+<div *ngIf="HasError" class="error-message">
+    {{ErrorMessage}}
+</div>

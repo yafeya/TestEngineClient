@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import * as Services from '../../services/index';
-import * as Models from '../../models/index';
+import { TestSolution, TestSolutionViewModel } from '../../models/index';
 
 @Component({
     selector: 'solution-list',
@@ -10,26 +10,54 @@ import * as Models from '../../models/index';
 })
 export class SolutionListComponent implements OnInit {
 
-    private mSolutions: Models.TestSolution[] = [];
+    private mSolutions: TestSolutionViewModel[] = [];
+    private mSelectedSolution: TestSolutionViewModel;
+    private mIsDetailEnabled: boolean = false;
 
     constructor(private solutionProvider: Services.SolutionProvider) {
 
+    }
+
+    get IsDetailEnabled(): boolean {
+        return this.mIsDetailEnabled;
+    }
+
+    get SelectedSolution() {
+        return this.mSelectedSolution;
     }
 
     async ngOnInit() {
         await this.initializeSolutions();
     }
 
-    get Solutions(): Models.TestSolution[] {
-
+    get Solutions(): TestSolutionViewModel[] {
         return this.mSolutions;
+    }
+
+    onSelected(solution: TestSolutionViewModel): void {
+        for (let item of this.mSolutions) {
+            if (item.IsSelected) {
+                item.IsSelected = false;
+                this.updateSelected(item);
+            }
+        }
+        this.mSelectedSolution = solution;
+        this.mSelectedSolution.IsSelected = true;
+        this.updateSelected(this.mSelectedSolution);
+        this.mIsDetailEnabled = this.mSelectedSolution != undefined;
+    }
+
+    private updateSelected(item: TestSolutionViewModel) {
+        if (item.OnSelectedChanged) {
+            item.OnSelectedChanged(item.IsSelected);
+        }
     }
 
     private async initializeSolutions() {
         let solutions = await this.solutionProvider.GetTestSolutions();
-        console.info(solutions);
         for (let solution of solutions) {
-            this.mSolutions.push(solution);
+            let solutionViewModel = new TestSolutionViewModel(solution);
+            this.mSolutions.push(solutionViewModel);
         }
     }
 }
