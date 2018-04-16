@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 
 import * as Services from '../services/index';
 import * as Components from '../components/index';
@@ -14,12 +15,13 @@ import * as Components from '../components/index';
     Components.SolutionListComponent,
     Components.SolutionCardComponent,
     Components.SolutionDetailComponent,
-    Components.SolutionDetailComponent
+    Components.SolutionConfigComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [Services.HttpClient, Services.SolutionProvider],
   bootstrap: [AppComponent]

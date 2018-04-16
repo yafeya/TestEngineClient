@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TestSolution } from '../../models/index';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'solution-cofig',
@@ -7,8 +8,11 @@ import { TestSolution } from '../../models/index';
     styleUrls: ['./solution.config.component.scss']
 })
 export class SolutionConfigComponent {
+    constructor(private router: Router) {
 
-    @Input('Solution') set Solution(solution: TestSolution) {
-        
+    }
+
+    NavigateToList() {
+        this.router.navigate(['list']);
     }
 }
