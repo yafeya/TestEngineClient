@@ -100,9 +100,9 @@ export class RawArgConfigurationComponent {
         }
         else {
             let ret = Number(value);
-            valid = ret != NaN;
+            valid = !Number.isNaN(ret);
             if (!valid) {
-                this.mInvalidMessage = `${value} cannot convert to a number.`;
+                this.mInvalidMessage = `'${value}' cannot convert to a number.`;
             }
         }
         return valid;
@@ -115,9 +115,9 @@ export class RawArgConfigurationComponent {
         let ret = value.split(Space);
         for (let item of ret) {
             let itemNum = parseInt(item);
-            if (itemNum == NaN) {
+            if (Number.isNaN(itemNum)) {
                 valid = false;
-                this.mInvalidMessage = `${itemNum} cannot convert to a byte.`;
+                this.mInvalidMessage = `'${itemNum}' cannot convert to a byte.`;
                 break;
             }
         }

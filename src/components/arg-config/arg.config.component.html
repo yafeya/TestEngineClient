@@ -3,8 +3,8 @@
         {{Name}}:
     </div>
     <div>
-        <input type="text" *ngIf="UseSimpleEditor" [ngModel]="Value" class="input-area" [class.iserror]="HasError">
-        <textarea rows="5" *ngIf="!UseSimpleEditor" [ngModel]="Value" class="input-area" [class.iserror]="HasError"></textarea>
+        <input type="text" *ngIf="UseSimpleEditor" [(ngModel)]="Value" class="input-area" [class.iserror]="HasError">
+        <textarea rows="5" *ngIf="!UseSimpleEditor" [(ngModel)]="Value" class="input-area" [class.iserror]="HasError"></textarea>
     </div>
     <div *ngIf="HasError" class="invalid-message">
         {{InvalidMessage}}

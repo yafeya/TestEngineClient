@@ -10,10 +10,15 @@ div {
 
 .button-area {
     display: inline;
-    left: 10px;
-    position: absolute;
     button {
+        margin-top: 20px;
         margin-right: 10px;
         width: 40px;
     }
+}
+
+.solution-config {
+    display: block;
+    position: relative;
+    margin-top: 20px;
 }
